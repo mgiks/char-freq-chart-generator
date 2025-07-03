@@ -2,7 +2,7 @@ from collections import defaultdict
 
 
 def main():
-    print("Let's generate a character frequeny chart from a sentence:\n")
+    print("Let's generate letter frequency chart from a sentence:\n")
 
     sentence = input("Input your sentence: ")
     separator = " "
