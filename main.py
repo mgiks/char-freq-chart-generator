@@ -16,13 +16,6 @@ def main():
     print(chart)
 
 
-def is_letter(letter: str):
-    is_upper_case = 65 <= ord(letter) and ord(letter) <= 90
-    is_lower_case = 97 <= ord(letter) and ord(letter) <= 122
-
-    return is_upper_case or is_lower_case
-
-
 def count_char_freqs(sentence: str) -> dict[str, list[str]]:
     char_freq: dict[str, list[str]] = defaultdict(list[str])
 
@@ -35,6 +28,13 @@ def count_char_freqs(sentence: str) -> dict[str, list[str]]:
         char_freq[lower_case_char].append(lower_case_char)
 
     return char_freq
+
+
+def is_letter(letter: str):
+    is_upper_case = 65 <= ord(letter) and ord(letter) <= 90
+    is_lower_case = 97 <= ord(letter) and ord(letter) <= 122
+
+    return is_upper_case or is_lower_case
 
 
 def build_chart(char_freqs: dict[str, list[str]], separator: str) -> str:
