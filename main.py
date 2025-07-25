@@ -43,11 +43,17 @@ def build_chart(char_freqs: dict[str, list[str]], separator: str) -> str:
 
     highest_freq = max([len(val) for val in vals])
 
-    chart = "   🭯"
+    spaces = [" " for _ in range(len(str(highest_freq) + " "))]
+    chart = f"{''.join(spaces) + ' '}🭯"
 
     for i in range(highest_freq - 1, -1, -1):
         chart += "\n"
-        chart += f" {i + 1} │"
+        number_length = len(str(i + 1))
+        adjusted_spaces = spaces[:]
+        for _ in range(number_length):
+            adjusted_spaces.pop()
+
+        chart += f" {i + 1}{''.join(adjusted_spaces)}│"
 
         for key in keys:
             char_freq = char_freqs.get(key)
@@ -62,13 +68,20 @@ def build_chart(char_freqs: dict[str, list[str]], separator: str) -> str:
 
             chart += f"{separator} {char} {separator}"
 
-    chart += "\n───┼"
+    chart += "\n"
+    for i in range(len(spaces) + 1):
+        chart += "─"
+    chart += "┼"
 
     for key in keys:
         chart += "─────"
     chart += "🭬"
 
-    chart += "\n   │"
+    chart += "\n"
+    for i in range(len(spaces) + 1):
+        chart += " "
+    chart += "│"
+
     for key in keys:
         chart += f"{separator}[{key}]{separator}"
 
