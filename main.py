@@ -64,7 +64,7 @@ def build_chart(char_freqs: dict[str, list[str]], separator: str) -> str:
             char = " "
 
             if len(char_freq) - 1 >= i:
-                char = char_freq[i]
+                char = "▇"
 
             chart += f"{separator} {char} {separator}"
 
